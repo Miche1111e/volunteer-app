@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'events/style.css' %}" />
+    <!-- Main Google Fonts List -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div id="navbar">
+        <button><span class="material-symbols-outlined">menu</span></button> <!-- Menu Button -->       
+        <button><span class="material-symbols-outlined">account_circle</span></button> <!-- Profile Button -->      
+        <!-- Search Bar -->
+        <div>
+            <form>
+            	<span class="material-symbols-outlined"> search </span>
+                <input class="search-input" type="text" name="search" placeholder="Search">
+                <button><span class="material-symbols-outlined">filter_alt</span></button> <!-- Filter Button -->
+            </form>
+        </div>
+    </div>
+    
+  {% for event in events %}
+    <div>
+      <div>[Image placeholder]</div>
+      <h3>{{ event.title }}</h3>
+      <p>{{ event.start_datetime|date:"j F Y" }}</p>
+      <p>{{ event.start_datetime|time:"g:i A" }} to {{ event.end_datetime|time:"g:i A" }}</p>
+      <p>{{ event.organisation.name }}</p>
+      <button><span class="material-symbols-outlined">bookmark</span></button>
+    </div>
+  {% endfor %}
+</body> 
+</html>
